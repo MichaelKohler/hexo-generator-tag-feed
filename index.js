@@ -4,12 +4,12 @@
 var assign = require('object-assign');
 var pathFn = require('path');
 
-var config = hexo.config.feed = assign({
+var config = hexo.config.tagFeed = assign({
   type: 'atom',
   limit: 20,
   hub: '',
   content: true
-}, hexo.config.feed);
+}, hexo.config.tagFeed);
 
 var type = config.type.toLowerCase();
 
@@ -22,12 +22,15 @@ if (type !== 'atom' && type !== 'rss2') {
 
 // Set default feed path
 if (!config.path) {
-  config.path = config.type + '.xml';
+  config.path = {
+    pre: 'tags',
+    post: config.type + '.xml'
+  };
 }
 
 // Add extension name if don't have
-if (!pathFn.extname(config.path)) {
-  config.path += '.xml';
+if (!pathFn.extname(config.path.post)) {
+  config.path.post += '.xml';
 }
 
-hexo.extend.generator.register('feed', require('./lib/generator'));
+hexo.extend.generator.register('tag-feed', require('./lib/generator'));

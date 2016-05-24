@@ -18,14 +18,18 @@ $ npm install hexo-generator-feed --save
 You can configure this plugin in `_config.yml`.
 
 ``` yaml
-feed:
+tagFeed:
   type: atom
-  path: atom.xml
+  path:
+    pre: tag
+    post: atom.xml
   limit: 20
   hub:
 ```
 
 - **type** - Feed type. (atom/rss2)
-- **path** - Feed path. (Default: atom.xml/rss2.xml)
+- **path** - Feed path. (`:pre/tagName/:post`)
+  - **pre** - Path before tag name (Default: tag)
+  - **post** - Path after tag name (Default: atom.xml/rss2.xml)
 - **limit** - Maximum number of posts in the feed (Use `0` or `false` to show all posts)
 - **hub** - URL of the PubSubHubbub hubs (Leave it empty if you don't use it)
