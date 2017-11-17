@@ -29,7 +29,7 @@ if (!config.path) {
 }
 
 // Add extension name if don't have
-if (!pathFn.extname(config.path.post)) {
+if (config.appendExtension && !pathFn.extname(config.path.post)) {
   config.path.post += '.xml';
 }
 

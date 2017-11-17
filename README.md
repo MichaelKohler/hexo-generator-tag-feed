@@ -25,6 +25,7 @@ tagFeed:
     post: atom.xml
   limit: 20
   hub:
+  appendExtension: true
 ```
 
 - **type** - Feed type. (atom/rss2)
@@ -33,3 +34,4 @@ tagFeed:
   - **post** - Path after tag name (Default: atom.xml/rss2.xml)
 - **limit** - Maximum number of posts in the feed (Use `0` or `false` to show all posts)
 - **hub** - URL of the PubSubHubbub hubs (Leave it empty if you don't use it)
+- **appendExtension** - Whether or not it should automatically append ".xml" to the feed URL
